@@ -1,0 +1,312 @@
+/* Add these styles to your existing CSS or create a new CSS file */
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+/* Top Header Styling */
+.top-header {
+  background-color: #3b5998;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  border-radius: 1px;
+  padding: 3px;
+  width: 100px;
+  height: 150px;
+}
+
+.top-buttons {
+  display: flex;
+}
+
+/* Modern Design Styles */
+.middle-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 26px;
+  background-color: #ddd;
+  background-clip: padding-box;
+  box-shadow: 0 0 5px #ffffff;
+}
+
+.first-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 26px;
+}
+
+.buttons-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 26px;
+}
+
+.description-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 26px;
+  align-self: flex-start;
+}
+#message {
+  font-size: 26px;
+  margin-top: 20px;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content button {
+  margin: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.checkmark-cell {
+  text-align: center;
+}
+
+/* Styles for the navigation menu */
+.nav-menu-container {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.nav-menu-list {
+  list-style-type: none;
+  font-size: larger;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu-list li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.show-nav-menu {
+  display: block;
+}
+
+/* Header styles */
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Navigation styles */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list li {
+  margin-right: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.page1_title {
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #85858d, #0464a4 75%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* New styles for the modern appearance */
+.rounded-button {
+  border-radius: 8px;
+}
+.yes-button {
+  background-color: #4caf50; /* Green color for the "Yes" button */
+}
+.no-button {
+  background-color: #e74c3c; /* Red color for the "No" button */
+}
+.check-button {
+  background-color: #3498db; /* Blue color for the "Perform Quality Test" button */
+}
+/* New styles for the table */
+.quality-table {
+  border: 3px solid #0064a7; /* Border around the table */
+  border-collapse: collapse;
+  width: auto;
+  table-layout: fixed; /* Fixed size for the table */
+  transition: height 0.3s; /* Transition for height changes */
+  background-color: #ddd;
+}
+.quality-table th,
+.quality-table td {
+  line-height: 45px;
+  font-size: 18px;
+  padding: 12px;
+  height: auto;
+  text-align: center;
+  word-wrap: break-word; /* Line break for long text */
+  border-bottom: 2px solid #419fde86; /* Border between rows */
+  border-left: 1px solid #419fde86; /* Border between columns */
+}
+.quality-table th {
+  background-color: #f2f2f2;
+}
+.checkmark-cell {
+  color: #4caf50; /* Green color for the checkmark */
+  align-self: center; /* Default spacing on the right */
+}
+
+/**Hamburger nav*/
+.nav {
+  display: flex;
+  align-items: center;
+}
+.hamburger-menu {
+  cursor: pointer;
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+.nav-list li {
+  margin-right: 20px;
+}
+header {
+  background-color: #565656;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Additional styles for the hamburger menu */
+.hamburger-menu {
+  cursor: pointer;
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+/* Header styles */
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+/* Navigation styles */
+.nav {
+  display: flex;
+  align-items: center;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+.nav-list li {
+  margin-right: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+.page1_title {
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #85858d, #0464a4 75%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.header_title_page1 {
+  align-self: center;
+  font-size: x-large;
+  color: #ddd;
+}
+
+.start-button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #3498db; /* Blue color for the "Perform Quality Test" button */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.abort-button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #3498db; /* Blue color for the "Perform Quality Test" button */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.header-logo-container{
+  width: 250px;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.header-title-container{
+  width: 250px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-hamburgermenu-container{
+  width: 250px;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
