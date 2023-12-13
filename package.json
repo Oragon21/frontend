@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "sweetalert2": "^11.6.13",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@costlydeveloper/ngx-awesome-popup": "^3.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

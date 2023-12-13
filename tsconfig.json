@@ -1,0 +1,18 @@
+// tsconfig.json
+{
+    "compilerOptions": {
+      "target": "ES2021",
+      "module": "es6",
+      "strict": true,
+      "outDir": "./src/dist",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.css",
+        "page1.html", 
+        "page2.html"]
+    
+  }
+  
