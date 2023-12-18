@@ -2,7 +2,7 @@
 
 class ApiService {
   // Assuming you have a base URL for your API
-  private baseUrl: string = 'http://localhost:1006'; // Adjust the URL accordingly
+  private baseUrl: string = "http://localhost:5000";
 
   async sendJsonRpcRequest(method: string, params: any[]): Promise<any> {
     const url = `${this.baseUrl}/`; // Update with your actual API endpoint
