@@ -11,8 +11,8 @@
     "include": [
         "src/**/*.ts",
         "src/**/*.css",
-        "page1.html", 
-        "page2.html"]
+        "src/**/*.html"
+      ]
     
   }
   

@@ -1,112 +1,100 @@
-// src/app.ts
+// src/header.ts
 
-module headerModule{
-let buttonClickCount = 0;
-var hamburgerMenu = document.createElement("div");
-const navMenuContainer = document.createElement("div");
+export class Header {
+  private buttonClickCount = 0;
+  private hamburgerMenu: HTMLDivElement;
+  private navMenuContainer: HTMLDivElement;
 
-function displayMessage(message: string) {
-  const messageElement = document.getElementById("message");
-  if (messageElement) {
-    messageElement.textContent = message;
+  constructor() {
+    this.hamburgerMenu = document.createElement("div");
+    this.navMenuContainer = document.createElement("div");
   }
-}
 
-// Függvény a fő tartalom létrehozásához
-function createPageContent(): void {
-  // Header
-  const header = document.createElement("header");
-  document.body.appendChild(header);
+  private displayMessage(message: string): void {
+    const messageElement = document.getElementById("message");
+    if (messageElement) {
+      messageElement.textContent = message;
+    }
+  }
 
-  const logo = document.createElement("img");
-  logo.src = "../../res/heitec-logo.png"; // Adjust the path as needed
-  logo.alt = "Logo";
-  logo.className = "logo";
-  logo.style.maxHeight = "50px";
-  header.appendChild(logo);
+  public createPageContent(): void {
+    const header = document.createElement("header");
+    document.body.appendChild(header);
 
-  const headerTitle = document.createElement("h1");
-  headerTitle.className = "header_title_page1";
-  headerTitle.textContent = "PLUSControl FANC";
-  header.appendChild(headerTitle);
+    const logo = this.createLogo();
+    header.appendChild(logo);
 
-  const nav = document.createElement("nav");
-  nav.className = "nav";
-  header.appendChild(nav);
+    const headerTitle = this.createHeaderTitle();
+    header.appendChild(headerTitle);
 
-  hamburgerMenu.className = "hamburger-menu";
-  hamburgerMenu.textContent = "\u2630"; // Unicode character for the hamburger menu
-  nav.appendChild(hamburgerMenu);
+    const nav = this.createNav();
+    header.appendChild(nav);
 
-  //Main
-  const mainSection = document.createElement("main");
-  mainSection.className = "middle-section";
+    // Implement Main section creation if needed
+  }
 
+  private createLogo(): HTMLImageElement {
+    const logo = document.createElement("img");
+    logo.src = "../../res/heitec-logo.png"; // Adjust the path as needed
+    logo.alt = "Logo";
+    logo.className = "logo";
+    logo.style.maxHeight = "50px";
+    return logo;
+  }
 
-  document.body.appendChild(mainSection);
-}
+  private createHeaderTitle(): HTMLHeadingElement {
+    const headerTitle = document.createElement("h1");
+    headerTitle.className = "header_title_page1";
+    headerTitle.textContent = "PLUSControl FANC";
+    return headerTitle;
+  }
 
+  private createNav(): HTMLElement {
+    const nav = document.createElement("nav");
+    nav.className = "nav";
+    this.hamburgerMenu.className = "hamburger-menu";
+    this.hamburgerMenu.textContent = "\u2630";
+    nav.appendChild(this.hamburgerMenu);
+    return nav;
+  }
 
-// Add this section to your code
-const pages = [
-  { title: 'Page 1', content: 'Content for Page 1' },
-  { title: 'Page 2', content: 'Content for Page 2' },
-  // Add more pages as needed
-];
+  public displayNavigationMenu(pages: { title: string; content: string }[]): void {
+    this.navMenuContainer.classList.add("nav-menu-container", "show-nav-menu");
 
-// Function to create and display the navigation menu
-function displayNavigationMenu(): void {
-  navMenuContainer.classList.add('nav-menu-container', 'show-nav-menu');
+    const navMenuList = document.createElement("ul");
+    navMenuList.classList.add("nav-menu-list");
 
-  const navMenuList = document.createElement('ul');
-  navMenuList.classList.add('nav-menu-list');
+    pages.forEach((page, index) => {
+      const navMenuItem = document.createElement("li");
+      navMenuItem.textContent = page.title;
 
-  // Create list items for each page
-  pages.forEach((page, index) => {
-    const navMenuItem = document.createElement('li');
-    navMenuItem.textContent = page.title;
+      navMenuItem.addEventListener("click", () => {
+        this.navigateTo(page);
+      });
 
-    navMenuItem.addEventListener('click', () => {
-      navigateTo(page); // Call a function to navigate to the selected page
+      navMenuList.appendChild(navMenuItem);
     });
 
-    navMenuList.appendChild(navMenuItem);
+    this.navMenuContainer.appendChild(navMenuList);
+    document.body.appendChild(this.navMenuContainer);
+  }
 
-  });
+  private navigateTo(page: { title: string; content: string }): void {
+    const pageUrlMap: Record<string, string> = {
+      'Page 1': 'pages/quality_control.html', // Update the URL accordingly
+      'Page 2': 'pages/page2.html', // Update the URL accordingly
+      // Add more pages as needed
+    };
 
-  navMenuContainer.appendChild(navMenuList);
-  document.body.appendChild(navMenuContainer);
-}
+    const targetUrl = pageUrlMap[page.title];
+    console.log(targetUrl);
+    if (targetUrl) {
+      window.location.href = targetUrl;
+    }
+  }
 
-// Function to navigate to the selected page
-function navigateTo(page: { title: string; content: string }): void {
-  // Implement the logic to navigate to the actual page here
-  // For now, let's set the window location to a placeholder URL
-  const pageUrlMap: Record<string, string> = {
-    'Page 1': 'pages/quality_control.html', // Update the URL accordingly
-    'Page 2': 'pages/page2.html', // Update the URL accordingly
-  };
-
-  const targetUrl = pageUrlMap[page.title];
-  console.log(targetUrl)
-  if (targetUrl) {
-    window.location.href = targetUrl;
+  public getHamburgerMenu(): HTMLDivElement {
+    return this.hamburgerMenu;
   }
 }
 
-// Add an event listener to the hamburger menu to display the navigation menu
-hamburgerMenu.addEventListener('click', () => {
-  const navMenuContainer = document.querySelector('.nav-menu-container');
-
-  // Toggle the visibility of the navigation menu
-  if (navMenuContainer) {
-    navMenuContainer.classList.toggle('show-nav-menu');
-  } else {
-    // If the navigation menu container doesn't exist, create and display it
-    displayNavigationMenu();
-  }
-});
-
-module.exports.createPageContent()
-}
-export {headerModule}

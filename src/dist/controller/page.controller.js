@@ -4,7 +4,25 @@ class PageController {
     async startProcess(method, params) {
         try {
             const response = await apiService.sendJsonRpcRequest(method, params);
-            return { message: "Process started successfully!\n" + JSON.stringify(response.status) + "\n" + JSON.stringify(response.header) }; // Update with the actual response structure
+            console.log("RHEEE ", JSON.stringify(response.status) == "7001");
+            console.log(JSON.stringify(response.status));
+            if (JSON.stringify(response.status).includes("7001"))
+                return {
+                    message: "Process started successfully!\n" +
+                        "Statuscode: " +
+                        JSON.stringify(response.status) +
+                        "\n" +
+                        JSON.stringify(response.header),
+                };
+            if (JSON.stringify(response.status).includes("7100"))
+                return {
+                    message: "Process already started!\n" +
+                        "Statuscode: " +
+                        JSON.stringify(response.status),
+                };
+            return {
+                message: "Cannot run the process!",
+            };
         }
         catch (error) {
             console.error("Error starting process:", error);
@@ -12,7 +30,7 @@ class PageController {
         }
     }
     async getResult() {
-        const method = 'result_request';
+        const method = "result_request";
         const params = ["World!"]; // Adjust parameters if needed
         try {
             const response = await apiService.sendJsonRpcRequest(method, params);

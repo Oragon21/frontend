@@ -1,4 +1,4 @@
-import { pageController } from "./controller/page.controller.js";
+import { pageController } from "../controller/page.controller.js";
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
@@ -9,7 +9,7 @@ interface Page {
 
 const pages: Page[] = [
   { title: "Quality Control", content: "Content for Page 1" },
-  { title: "Processes", content: "Content for Page 2" },
+  { title: "Page 2", content: "Content for Page 2" },
   { title: "Measurements result", content: "Content for Measurements" },
   // Add more pages as needed
 ];
@@ -95,23 +95,14 @@ function createMainSection(): HTMLElement {
   sideMainSectionRight.className = "side-main-section-right";
   mainSection.appendChild(sideMainSectionRight);
 
-  const sideMainSectionRight2 = document.createElement("main");
-  sideMainSectionRight2.className = "side-main-section-right";
-  mainSection.appendChild(sideMainSectionRight2);
-
-  const sideMainSectionRight3 = document.createElement("main");
-  sideMainSectionRight3.className = "side-main-section-right";
-  mainSection.appendChild(sideMainSectionRight3);
+  const sideMainSectionBottom = document.createElement("main");
+  sideMainSectionBottom.className = "side-main-section-bottom";
+  mainSection.appendChild(sideMainSectionBottom);
 
   createSideBoxes(sideMainSectionLeft);
 
   createMachineModeButton(sideMainSectionRight);
   createMachineStatusButton(sideMainSectionRight);
-
-  createStartButton(sideMainSectionRight2, "Start", handleStartButtonClick);
-  createResultButton(sideMainSectionRight2, "Get Result", handleGetResultButtonClick);
-
-  createMessageTextField(sideMainSectionRight3);
 
 
   return mainSection;
@@ -166,7 +157,7 @@ function createMachineStatusButton(parent: HTMLElement): void {
 function createMachineStatusPopup(): void {
   if (!machineStatusPopup && !machineModePopup) {
     machineStatusPopup = createPopupContainer();
-    createPopupButtons(machineStatusPopup, ["Start", "Reset", "Close"], [navigateToDescriptionPage, resetMachineStatus, () => closePopup(machineStatusPopup)]);
+    createPopupButtons(machineStatusPopup, ["Start", "Reset", "Close"], [navigateToDescriptionPage, resetMachineMode, () => closePopup(machineStatusPopup)]);
     document.body.appendChild(machineStatusPopup);
     // Disable Machine Mode button while Machine Status popup is active
     disableButton("Machine Mode");
@@ -271,9 +262,8 @@ function displayNavigationMenu(): void {
 function navigateTo(page: Page): void {
   const pageUrlMap: Record<string, string> = {
     "Quality Control": "pages/quality_control.html",
-    "Processes": "pages/processes.html",
+    "Page 2": "pages/page2.html",
     "Measurements result": "pages/measurements_result.html",
-
   };
 
   const targetUrl = pageUrlMap[page.title];
@@ -316,13 +306,6 @@ function resetMachineMode(): void {
   // For now, let's just log a message
   console.log("Machine mode reset!");
   closePopup(machineModePopup); // Close the popup after resetting the mode
-}
-
-function resetMachineStatus(): void {
-  // Implement logic to reset the machine mode variable and perform any other actions
-  // For now, let's just log a message
-  console.log("Machine mode reset!");
-  closePopup(machineStatusPopup); // Close the popup after resetting the mode
 }
 
 // Event listeners
